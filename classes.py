@@ -848,11 +848,12 @@ class AlphaComplex(Filtration):
     def plot_persistent_homology(self, dgm=None, r=inf, t='d', dpi=300):
         """
         Plots the persitence diagram (t='d') or the bar code (t='b')
+        If dgm is None it will call the persistent diagram.
 
         Args:
-            dgm (list(list(tuples))):
+            dgm (list(list(tuples)), default None):
             r (float):
-            t (str):
+            t (str): 'd' for persistence diagram, 'b' for bar code
             dpi (int):
         """
 
@@ -883,14 +884,14 @@ class AlphaComplex(Filtration):
         plt.figure(dpi=dpi)
 
         if t == 'd':
-            self.__plot_persistence_diagram__(dgm_filtered, max_)
+            self.__plot_persistent_diagram__(dgm_filtered, max_)
         else:
-            self.__plot_persistence_bar_code__(dgm_filtered, max_)
+            self.__plot_persistent_bar_code__(dgm_filtered, max_)
 
     @staticmethod
-    def __plot_persistence_diagram__(dgm, max_):
+    def __plot_persistent_diagram__(dgm, max_):
         """
-        Plots the persistence diagram of a given list of birth death pairs (dgm) and the maximum of a filtration
+        Plots the persistent diagram of a given list of birth death pairs (dgm) and the maximum of a filtration
         (max_)
 
         Args:
@@ -915,9 +916,9 @@ class AlphaComplex(Filtration):
         plt.show()
 
     @staticmethod
-    def __plot_persistence_bar_code__(dgm, max_):
+    def __plot_persistent_bar_code__(dgm, max_):
         """
-        Plots the persistence bar code of a given list of birth death pairs (dgm)
+        Plots the persistent bar code of a given list of birth death pairs (dgm)
 
         Args:
             dgm (list(list(tuple))): list of lists of birth death pairs
