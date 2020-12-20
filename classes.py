@@ -178,7 +178,7 @@ class SimplicialComplex:
         """
         If n > 1 returns the n-dimensional simplices of the complex
         If n = -1 returns all the simplices of the complex
-        Si n < -1 returns all the i-dimensional simplices with i <= -n ((-n)-skeleton)
+        Si n < -1 returns all the i-dimensional simplices with i <= -n ((-n + 1)-skeleton)
 
         Args:
             n (int)
@@ -572,9 +572,9 @@ class Filtration(SimplicialComplex):
 
     def faces(self, n=-1):
         """
-        Produce las caras de un simplex de dimension n.
-        Si n es -1 devuelve todas las caras del complejo
-        Si n es menor que -1 devuelve todas las caras de dimension -n o menor (-n)-skeleton
+        If n > 1 returns the n-dimensional simplices of the complex
+        If n = -1 returns all the simplices of the complex
+        Si n < -1 returns all the i-dimensional simplices with i <= -n ((-n + 1)-skeleton)
 
         Args:
             n (int, default -1)
