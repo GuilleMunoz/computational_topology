@@ -1,6 +1,6 @@
 # computational_topology
 
-An implementation in Python of a simplicial complex, a filtration, an Alpha complex and Vietoris-Rips complex.
+A Python implementation of a simplicial complex, a filtration, an Alpha complex and Vietoris-Rips complex.
 
 ---
 ## SimplicialComplex
@@ -13,6 +13,8 @@ Used to distinguish topological spaces, they can also be used for simplicial com
 For example:
 
 ```python
+from classes import SimplicialComplex
+
 sc = SimplicialComplex()
 sc.load('botella de Klein')
 print('The Betti numbers of the Klein bottle are: ', sc.betti_nums())
@@ -29,29 +31,56 @@ A filtration is a sequence of a simplicial complexes.
 
 An AlphaComplex is a filtration determined by the Delaunay triangulation.
 
-### persistent homology
+### Persistent homology
  
 You can get the persistent diagram (dgm) by doing:
 
 
 ```python
+from classes import AlphaComplex
+import numpy as np
+from random import gauss
+
+o = 0.05
+num = 100
+f = lambda t: (np.cos(t) + gauss(0, o), np.cos(t) * np.sin(t) + gauss(0, o))
+ls = np.arange(0,  2 * np.pi, 2 * np.pi/ num)
+xs = np.ones(len(ls))
+ys = np.ones(len(ls))
+for i, x in enumerate(ls):
+    xs[i], ys[i] = f(x)
+
+# points representing the double torus
+points = np.array(map(list, zip(xs, ys)))
+
 alpha = AlphaComplex(points=points)
 dgm = alpha.persistent_homology()
 ```
 
-or plot the persistent diagram:
+and then plot the persistent diagram:
 
 ````python
-alpha = AlphaComplex(points=points)
-dgm = alpha.persistent_homology()
 alpha.plot_persistent_homology(dgm=dgm, t='d')
 ````
 
 or plot the persistent bar code:
 
 ````python
-alpha = AlphaComplex(points=points)
-dgm = alpha.persistent_homology()
 alpha.plot_persistent_homology(dgm=dgm, t='b')
 ````
 
+For example giving this set of points that represent a double torus (genus 2),
+
+![picture](examples/cloud.png)
+
+we got the following persistent diagram, where it can be appreciated two holes that persist more than the average:
+
+![picture](examples/persistent_homology.png)
+
+---
+
+## Dependencies
+- numpy
+- scipy
+- matplotlib
+- networkx
