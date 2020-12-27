@@ -1,7 +1,5 @@
 from itertools import combinations
-from functools import reduce, cmp_to_key
-
-import networkx as nx
+from functools import cmp_to_key
 
 from math import inf, sqrt
 
@@ -21,7 +19,7 @@ from os.path import getsize as size
 
 class SimplicialComplex:
     """
-    A simplicial complex is a set os points, segments, ..., n-dimensional simplices
+    A simplicial complex is a set of points, segments, ..., n-dimensional simplices
 
     Args:
         simplices (list of simplices, default None): List of simplices to inicialice the complex
@@ -96,8 +94,8 @@ class SimplicialComplex:
 
         Args:
             simplicial_complex (SimplicialComplex): The simplicial to dump
-            name (str): Simplicial name (ej. 'toro')
-            file (str, default 'simplicia'): name of the file where the simplicial is stored
+            name (str): Simplicial name (ej. 'torus')
+            file (str, default 'simplicial'): name of the file where the simplicial complex is stored
 
         Returns:
             (SimplicialComplex)
@@ -279,28 +277,7 @@ class SimplicialComplex:
 
     def num_connected_components(self):
         """
-        Returns the number of connect components of the simplicial complex
-
-        Returns:
-            (int)
-        """
-        graph = nx.Graph()
-
-        for v in reduce(lambda x, y: x | y, map(set, self.simplices_maximales)):
-            graph.add_node(v)
-
-        edges = []
-        for simplex in map(set, self.simplices_maximales):
-            edges.extend(self.combs(simplex, n=1))
-
-        graph.add_edges_from(edges)
-
-        return nx.algorithms.components.number_connected_components(graph)
-
-    def num_connected_components_proposed(self):
-        """
         Returns the number of connect components of the simplicial complex.
-        It supposed to be 2 times faster than num_connected_components
 
         Returns:
             (int)

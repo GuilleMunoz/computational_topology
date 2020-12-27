@@ -5,9 +5,9 @@ A Python implementation of a simplicial complex, a filtration, an Alpha complex 
 ---
 ## SimplicialComplex
 
-A simplicial complex is a set os points, segments, ..., n-dimensional simplices.
+A simplicial complex is a set os points, segments, ..., n-dimensional simplices. To create one, you only need to provide the maximal simplices.
 
-### Betti nums
+### Betti numbers
 
 Used to distinguish topological spaces, they can also be used for simplicial complexes.
 For example:
@@ -16,9 +16,11 @@ For example:
 from classes import SimplicialComplex
 
 sc = SimplicialComplex()
-sc.load('botella de Klein')
+sc.load('Klein bottle')
 print('The Betti numbers of the Klein bottle are: ', sc.betti_nums())
 ```
+
+We provide also an implementation of the incremental algorithm for calculating the betti numbers in R2.
 
 ---
 ## Filtration
@@ -83,4 +85,3 @@ we got the following persistent diagram, where it can be appreciated two holes t
 - numpy
 - scipy
 - matplotlib
-- networkx

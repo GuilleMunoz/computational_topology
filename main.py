@@ -37,11 +37,13 @@ def saved_SC():
 
 
 if __name__ == '__main__':
-    points = np.array(points_cloud(omega=0.2, num=500))
-    alpha = AlphaComplex(points=points)
-    start = time()
-    alpha.persistent_homology()
-    end = time()
-    print(end - start)
+    trian = [[0, 1, 4], [1, 2, 5], [0, 2, 3], [0, 3, 4], [1, 4, 5], [2, 5, 3],
+              [3, 4, 7], [4, 5, 8], [5, 3, 1], [3, 1, 7], [4, 7, 8], [5, 8, 1],
+              [1, 1, 7], [2, 7, 8], [1, 8, 0], [1, 2, 7], [0, 2, 8],
+              [9, 10, 11], [1, 10, 12], [1, 9, 11], [10, 11, 12], [1, 1, 12],
+              [1, 11, 14], [11, 12, 15], [1, 12, 13], [11, 13, 14], [11, 14, 15],
+              [12, 13, 15], [10, 13, 14], [1, 14, 15], [9, 15, 13], [9, 10, 13],
+              [10, 1, 14], [1, 9, 15]]
 
-
+    sc = SimplicialComplex(simplices=trian)
+    sc.dump("genus 2")
