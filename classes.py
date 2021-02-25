@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import matplotlib.animation as animation
 
-from jit_method import radius, center_radius, dist
+from aux_methods import radius, center_radius, dist
 
 import json
 from os.path import getsize as size

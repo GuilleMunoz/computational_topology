@@ -1,16 +1,11 @@
 from math import sqrt
 import numpy as np
-from numba import jit
-from numba import float64
-import numba.types as types
 
 
-@jit(float64(float64, float64, float64, float64), nopython=True, cache=True)
 def dist(x1, y1, x2, y2):
     return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 
-@jit(float64(float64, float64, float64, float64, float64, float64), nopython=True, cache=True)
 def radius(x1, y1, x2, y2, x3, y3):
     """
     Computes de center and radius of 3 points (x1, y1), (x2, y2) and (x3, y3)
@@ -38,7 +33,6 @@ def radius(x1, y1, x2, y2, x3, y3):
                np.sqrt((x - x1) ** 2 + (y - y1) ** 2))
 
 
-@jit(types.Tuple((types.Tuple((float64, float64)), float64))(float64, float64, float64, float64), nopython=True, cache=True)
 def center_radius(x1, y1, x2, y2):
     """
     Computes de center and radius of two points (x1, y1) and (x2, y2)
