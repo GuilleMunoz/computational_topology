@@ -1,11 +1,11 @@
 # computational_topology
 
-A Python implementation of a simplicial complex, a filtration, an Alpha complex and Vietoris-Rips complex.
+A Python implementation of a simplicial complex, a filtration, an Alpha complex and Vietoris-Rips complex for Topological Data Analysis (TDA). TDA aims to extract information from noisy, incomplete or complex dataset using techniques from topology.
 
 ---
 ## SimplicialComplex
 
-A simplicial complex is a set os points, segments, ..., n-dimensional simplices. To create one, you only need to provide the maximal simplices.
+A simplicial complex is a set of points, segments, ..., n-dimensional simplices. To create one, you only need to provide the maximal simplices.
 
 ### Betti numbers
 
