@@ -516,7 +516,7 @@ class Filtration(SimplicialComplex):
         """
         Extend the list of simplices
 
-        simplices (list of simplices, default None): List of simplices to inicialice the complex
+        simplices (list of simplices): List of simplices to inicialice the complex
         filtration_values (list(int), default None): filtration value of each simplex must have the
                                                      same length as simplices
         """
