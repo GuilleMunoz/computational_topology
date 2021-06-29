@@ -1,6 +1,7 @@
 # computational_topology
 
-A Python implementation of a simplicial complex, a filtration, an Alpha complex and Vietoris-Rips complex for Topological Data Analysis (TDA). TDA aims to extract information from noisy, incomplete or complex dataset using techniques from topology.
+Topological Data Analysis (TDA) aims to extract information from noisy, incomplete or complex dataset using techniques from topology.
+Here, we provide a simple implementation of a simplicial complex, a filtration, an Alpha complex and Vietoris-Rips complex and some algorithms.
 
 ---
 ## SimplicialComplex
